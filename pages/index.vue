@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>Get the latest tech news!</h1>
     </section>
-    <PostList/>
+    <PostList :posts="loadedPosts"/>
   </div>
 </template>
 
@@ -11,7 +11,37 @@
 import PostList from "../components/Posts/PostList";
 
 export default {
-  components: {PostList}
+  components: {PostList},
+  data() {
+    return {
+    }
+  },
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPosts: [
+          {
+            id: 1,
+            title: 'Lama krotka',
+            previewText: 'Toto je testovaci post',
+            thumbnail: 'https://g.denik.cz/122/ee/lama_10803373-jpg_denik-630.jpg'
+          },
+          {
+            id: 2,
+            title: 'Lama krotka',
+            previewText: 'Toto je testovaci post',
+            thumbnail: 'https://g.denik.cz/122/ee/lama_10803373-jpg_denik-630.jpg'
+          },
+          {
+            id: 3,
+            title: 'Lama krotka',
+            previewText: 'Toto je testovaci post',
+            thumbnail: 'https://g.denik.cz/122/ee/lama_10803373-jpg_denik-630.jpg'
+          }
+        ]
+      });
+    }, 1500);
+  }
 }
 </script>
 

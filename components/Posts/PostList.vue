@@ -1,17 +1,13 @@
 <template>
   <section class="post-list">
     <PostPreview
+      v-for="(post, index) in posts"
+      :key="index"
       :is-admin="isAdmin"
-      id="1"
-      thumbnail="https://flog.pravda.sk/data/flog/estus-1/662228/tLE_662228_orig.jpg"
-      preview-text="Mahagarsky text"
-      title="Nadpis prveho postu"/>
-    <PostPreview
-      :is-admin="isAdmin"
-      id="2"
-      thumbnail="https://static.sashe.sk/avatars/b/266217-1464725595.jpg"
-      preview-text="Lama lampa"
-      title="Nadpis druheho postu"/>
+      :id="String(post.id)"
+      :thumbnail="post.thumbnail"
+      :preview-text="post.previewText"
+      :title="post.title" />
   </section>
 </template>
 
@@ -28,6 +24,10 @@ export default {
       type: Boolean,
       required: false,
       default: false
+    },
+    posts: {
+      type: Array,
+      required: true
     }
   }
 }

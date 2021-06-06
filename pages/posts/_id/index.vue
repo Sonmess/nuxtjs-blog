@@ -1,12 +1,12 @@
 <template>
   <div class="single-post-page">
     <section class="post">
-      <h1 class="post-title">Title</h1>
+      <h1 class="post-title">{{ loadedPost.title }}</h1>
       <div class="post-details">
-        <div class="post-detail">Last updated on: XXX</div>
-        <div class="post-detail">Written by NAME</div>
+        <div class="post-detail">Last updated on: {{ loadedPost.updatedAt }}</div>
+        <div class="post-detail">Written by {{ loadedPost.author }}</div>
       </div>
-      <p class="">Content of the post</p>
+      <p class="">{{ loadedPost.content }}</p>
     </section>
     <section class="post-feedback">
       <p>Let me know what you think about the post, send a mail to
@@ -18,7 +18,22 @@
 
 <script>
 export default {
-  name: "index"
+  name: "index",
+  asyncData(context, callback) {
+    setTimeout(() => {
+      callback(null, {
+        loadedPost: {
+          id: 1,
+          title: 'Lama krotka (ID: ' + (context.route.params.id) + ')',
+          previewText: 'Toto je testovaci post',
+          thumbnail: 'https://g.denik.cz/122/ee/lama_10803373-jpg_denik-630.jpg',
+          author: "Sonmess",
+          updatedAt: new Date(),
+          content: 'Definitely not some end text, this is just a tribute.',
+        }
+      });
+    }, 1000)
+  }
 }
 </script>
 
