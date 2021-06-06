@@ -18,7 +18,7 @@ export default {
         author: "Mess",
         title: 'Super lama',
         content: "Awesome lama, amazing skills",
-        thumbnailLink: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3x-_FpsQBcH1Fz3V_fPT640VQtIVcl3we-w&usqp=CAU'
+        thumbnail: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3x-_FpsQBcH1Fz3V_fPT640VQtIVcl3we-w&usqp=CAU'
       }
     }
   }

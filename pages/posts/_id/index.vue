@@ -17,23 +17,35 @@
 </template>
 
 <script>
+import Axios from "axios";
+
 export default {
   name: "index",
-  asyncData(context, callback) {
-    setTimeout(() => {
-      callback(null, {
-        loadedPost: {
-          id: 1,
-          title: 'Lama krotka (ID: ' + (context.route.params.id) + ')',
-          previewText: 'Toto je testovaci post',
-          thumbnail: 'https://g.denik.cz/122/ee/lama_10803373-jpg_denik-630.jpg',
-          author: "Sonmess",
-          updatedAt: new Date(),
-          content: 'Definitely not some end text, this is just a tribute.',
+  asyncData(context) {
+    return Axios.get('https://nuxt-blog-6f31b-default-rtdb.europe-west1.firebasedatabase.app/post/' + context.params.id + '.json')
+      .then(response => {
+        return {
+          loadedPost: response.data
         }
-      });
-    }, 1000)
+      })
+      .catch(e => context.error(e));
   }
+  //We dont need it anymore
+  // asyncData(context, callback) {
+  //   setTimeout(() => {
+  //     callback(null, {
+  //       loadedPost: {
+  //         id: 1,
+  //         title: 'Lama krotka (ID: ' + (context.route.params.id) + ')',
+  //         previewText: 'Toto je testovaci post',
+  //         thumbnail: 'https://g.denik.cz/122/ee/lama_10803373-jpg_denik-630.jpg',
+  //         author: "Sonmess",
+  //         updatedAt: new Date(),
+  //         content: 'Definitely not some end text, this is just a tribute.',
+  //       }
+  //     });
+  //   }, 1000)
+  // }
 }
 </script>
 
