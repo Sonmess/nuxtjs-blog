@@ -18,14 +18,9 @@ export default {
   layout: 'admin',
   methods: {
     onSubmitted(postData) {
-      Axios.post(
-        'https://nuxt-blog-6f31b-default-rtdb.europe-west1.firebasedatabase.app/post.json',
-        {...postData, updatedAt: new Date()})
-      .then(result => {
-        console.log(result);
-      })
-      .catch(error => {
-        console.log(error);
+      this.$store.dispatch('addPost', postData)
+      .then(() => {
+        this.$router.push('/admin');
       })
     }
   }
