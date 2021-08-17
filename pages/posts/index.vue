@@ -5,13 +5,9 @@
 </template>
 
 <script>
-import PostList from "../../components/Posts/PostList";
 
 export default {
   name: "index",
-  components: {
-    PostList
-  },
   // fetch(context) {
   //   //We have better solution in vuex store
   //   // if (context.store.state.loadedPosts.length > 0) {
